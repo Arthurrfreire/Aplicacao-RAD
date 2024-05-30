@@ -35,15 +35,15 @@ class PrincipalRAD:
 
         self.treeMedias.pack(padx=10, pady=10)
 
-        self.lblNome.place(x=100, y=50)
-        self.txtNome.place(x=200, y=50)
-        self.lblNota1.place(x=100, y=100)
-        self.txtNota1.place(x=200, y=100)
-        self.lblNota2.place(x=100, y=150)
-        self.txtNota2.place(x=200, y=150)
-        self.btnCalcular.place(x=100, y=200)
-        self.treeMedias.place(x=100, y=300)
-        self.verscrlbar.place(x=805, y=300, height=225)
+        self.lblNome.place(x=10, y=10)
+        self.txtNome.place(x=120, y=10)
+        self.lblNota1.place(x=10, y=40)
+        self.txtNota1.place(x=120, y=40)
+        self.lblNota2.place(x=10, y=70)
+        self.txtNota2.place(x=120, y=70)
+        self.btnCalcular.place(x=10, y=100)
+        self.treeMedias.place(x=10, y=140)
+        self.verscrlbar.place(x=805, y=140, height=225)
 
         self.id = 0
         self.iid = 0  # Inicializar self.iid
