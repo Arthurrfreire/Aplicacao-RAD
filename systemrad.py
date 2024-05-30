@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import pandas as pd
+import os
 
 class PrincipalRAD:
     def __init__(self, win):
@@ -50,8 +51,14 @@ class PrincipalRAD:
         self.carregarDadosIniciais()
 
     def carregarDadosIniciais(self):
+        fsave = 'planilhaAlunos.xlsx'
+        if not os.path.isfile(fsave):
+            df = pd.DataFrame(columns=self.dadosColunas)
+            df.to_excel(fsave, index=False)
+            print("Arquivo criado: 'planilhaAlunos.xlsx'")
+            return
+
         try:
-            fsave = 'planilhaAlunos.xlsx'
             dados = pd.read_excel(fsave)
             print("********* dados disponíveis ***********")
             print(dados)
@@ -59,8 +66,8 @@ class PrincipalRAD:
             nn = len(dados['Aluno'])
             for i in range(nn):
                 nome = dados['Aluno'][i]
-                nota1 = str(dados['Nota1'][i])
-                nota2 = str(dados['Nota2'][i])
+                nota1 = str(dados['Nota 1'][i])
+                nota2 = str(dados['Nota 2'][i])
                 media = str(dados['Média'][i])
                 situacao = dados['Situação'][i]
 
@@ -75,7 +82,7 @@ class PrincipalRAD:
                 self.iid += 1
                 self.id += 1
         except Exception as e:
-            print('Ainda não existem dados para carregar')
+            print('Erro ao carregar os dados')
             print(e)
 
     def fSalvarDados(self):
