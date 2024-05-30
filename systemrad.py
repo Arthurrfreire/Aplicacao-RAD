@@ -16,14 +16,24 @@ class PrincipalRAD:
 
         self.dadosColunas = ("Aluno", "Nota 1", "Nota 2", "Média", "Situação")
 
+        self.tree_frame = tk.Frame(win)
+        self.tree_frame.pack(padx=10, pady=10)
+
         self.treeMedias = ttk.Treeview(win,
                                        columns=self.dadosColunas,
-                                       selectmode='browse')
-
+                                       selectmode='browse',
+                                       show='headings')
+        
         self.verscrlbar = ttk.Scrollbar(win,
                                         orient="vertical",
-                                        command=self.treeMedias.yview)
+                                        command=self.treeMedias.yview,)
+        self.verscrlbar.set(0.5, 0.5)
+        self.treeMedias.yview_moveto(0.5)
 
+        self.treeMedias.pack(padx=10, pady=10)
+        self.treeMedias.pack(side='left')
+        self.verscrlbar.pack(side='right', fill='y')
+        
         self.verscrlbar.pack(side='right', fill='y')
         self.treeMedias.configure(yscrollcommand=self.verscrlbar.set)
 
@@ -33,20 +43,23 @@ class PrincipalRAD:
         self.treeMedias.heading("Média", text='Média')
         self.treeMedias.heading("Situação", text='Situação')
 
-        self.treeMedias.pack(padx=10, pady=10)
-
-        self.lblNome.place(x=10, y=10)
-        self.txtNome.place(x=120, y=10)
-        self.lblNota1.place(x=10, y=40)
-        self.txtNota1.place(x=120, y=40)
-        self.lblNota2.place(x=10, y=70)
-        self.txtNota2.place(x=120, y=70)
-        self.btnCalcular.place(x=10, y=100)
-        self.treeMedias.place(x=10, y=140)
-        self.verscrlbar.place(x=805, y=140, height=225)
+        
+        self.lblNome.place(x=100, y=50)
+        self.txtNome.place(x=200, y=50)
+        
+        self.lblNota1.place(x=100, y=100)
+        self.txtNota1.place(x=200, y=100)
+        
+        self.lblNota2.place(x=100, y=150)
+        self.txtNota2.place(x=200, y=150)
+        
+        self.btnCalcular.place(x=100, y=200)
+        
+        self.treeMedias.place(x=100, y=300)
+        self.verscrlbar.place(x=1100, y=300, height=225)
 
         self.id = 0
-        self.iid = 0  # Inicializar self.iid
+        self.iid = 0
 
         self.carregarDadosIniciais()
 
@@ -142,5 +155,5 @@ class PrincipalRAD:
 janela = tk.Tk()
 principal = PrincipalRAD(janela)
 janela.title('Bem vindo ao RAD')
-janela.geometry("820x600+10+10")
+janela.geometry("1200x600+10+10")
 janela.mainloop()
